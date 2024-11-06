@@ -10,6 +10,7 @@ public class B4 {
         int invertido = 0;
         System.out.println("Introduce un número entero: ");
         num = sc.nextInt();
+        sc.close();
         while (num > 0) {
             invertido = invertido * 10 + num % 10;
             num /= 10;
