@@ -14,13 +14,13 @@ public class SerVivo {
     }
     public boolean equals(SerVivo otro) {
         return this.edad == otro.edad;
-    }
+    }mayor(SerVivo otro) {
+        SerVivo resul
     @Override
     public String toString() {
         return "Edad=" + edad;
     }
-    public SerVivo mayor(SerVivo otro) {
-        SerVivo resultado;
+    public SerVivo tado;
         if (this.edad > otro.edad) {
             resultado = this;
         } else {

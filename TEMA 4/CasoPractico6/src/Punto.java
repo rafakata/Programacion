@@ -1,2 +1,6 @@
-package PACKAGE_NAME;public class Punto {
+public class Punto {
+  private float x;
+  private float y;
+
+
 }

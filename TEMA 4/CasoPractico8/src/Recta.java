@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class Recta {
+public class Recta extends Punto{
+    public Recta(double x, double y) {
+        super(x, y);
+    }
 }
