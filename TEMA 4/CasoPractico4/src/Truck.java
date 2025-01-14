@@ -20,4 +20,12 @@ public class Truck extends Car {
                 "weight=" + weight +
                 '}';
     }
+    public double getSalePrice(){
+        double resultado;
+        if (weight>2000)
+            resultado = super.getSalePrice()*0.9;
+        else
+            resultado = super.getSalePrice()*0.8;
+        return resultado;
+    }
 }

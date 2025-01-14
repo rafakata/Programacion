@@ -1,19 +1,15 @@
 public class Persona {
     private String nombre;
     private String apellido;
-    private int telefono;
+    private String telefono;
 
-    public Persona(String nombre, String apellido, int telefono) {
+    public Persona(String nombre, String apellido, String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
-        if (telefono<100000000||telefono>999999999){
-            System.out.println("Número de teléfono no válido.");
-        }else{
-            this.telefono = telefono;
-        }
+        setTelefono(telefono);
     }
-    public Persona(){
 
+    public Persona() {
     }
 
     public String getNombre() {
@@ -32,12 +28,14 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setTelefono(String telefono) {
+        if (telefono.length()!=9)
+            this.telefono = "000000000";
+        else this.telefono = telefono;
     }
 
     @Override
@@ -45,7 +43,7 @@ public class Persona {
         return "Persona{" +
                 "nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
-                ", telefono=" + telefono +
+                ", telefono='" + telefono + '\'' +
                 '}';
     }
 }

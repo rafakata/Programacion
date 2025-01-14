@@ -1,35 +1,34 @@
 import java.util.Scanner;
 
 public class Cuenta {
-    private String ncuenta;
-    private int saldo;
+    private String numeroCuenta;
+    private double saldo;
     private Persona propietario;
-    Scanner sc = new Scanner(System.in);
 
-    public Cuenta(String ncuenta, int saldo, Persona propietario) {
-        this.ncuenta = ncuenta;
-        this.saldo = saldo;
+    public Cuenta(String numeroCuenta, double saldo, Persona propietario) {
+        this.numeroCuenta = numeroCuenta;
+        setSaldo(saldo);
         this.propietario = propietario;
     }
 
     public Cuenta() {
-
     }
 
-    public String getNcuenta() {
-        return ncuenta;
+    public String getNumeroCuenta() { return numeroCuenta; }
+
+    public void setNumeroCuenta(String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
     }
 
-    public void setNcuenta(String ncuenta) {
-        this.ncuenta = ncuenta;
-    }
-
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
-        this.saldo = saldo;
+    public void setSaldo(double saldo) {
+        if (this.saldo<0)
+            this.saldo = 0;
+        else
+            this.saldo = saldo;
     }
 
     public Persona getPropietario() {
@@ -43,35 +42,25 @@ public class Cuenta {
     @Override
     public String toString() {
         return "Cuenta{" +
-                "ncuenta='" + ncuenta + '\'' +
+                "numeroCuenta='" + numeroCuenta + '\'' +
                 ", saldo=" + saldo +
                 ", propietario=" + propietario +
                 '}';
     }
 
-    public void transaccion(double cantidad, int tipotrans) {
-        do {
-            System.out.println("¿Qué desa hacer? Introduzca 1 si desea hacer un reintegro y 2 si quiere hacer un ingreso:");
-            tipotrans = sc.nextInt();
-        } while (tipotrans < 1 || tipotrans > 2);
-        if (tipotrans == 1) {
-            System.out.println("Introduzca la cantidad que desea sacar: ");
-            cantidad = sc.nextDouble();
-            if (cantidad > saldo) {
-                System.out.println("No tienes tanto dinero.");
-            } else {
-                double reintegro = saldo - cantidad;
-                System.out.println("El saldo actual es: " + reintegro + "€");
+    public void transaccion(double cantidad, String tipo){
+        switch(tipo){
+            case "reintegro" -> {
+                if (cantidad<=saldo)
+                    saldo-=cantidad;
+                else
+                    System.out.println("No se puede realizar el reintegro");
             }
-        } else {
-            do {
-                System.out.println("Introduzca cuánto dinero quiere ingresar:");
-                cantidad = sc.nextDouble();
-            } while (cantidad <= 0);
-            double ingreso = saldo + cantidad;
-            System.out.println("El saldo actual es: " + ingreso + "€");
+            case "ingreso" ->{
+                saldo+=cantidad;
+            }
+            default -> System.out.println("No se puede realizar la transacción");
         }
-
-
+        System.out.printf("Transacción: %s - Saldo: %.2f€\n",tipo,saldo);
     }
 }

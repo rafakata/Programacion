@@ -20,4 +20,13 @@ public class Sedan extends Car{
                 "length=" + length +
                 '}';
     }
+    public double getSalePrice(){
+        double resultado;
+        if (length > 20){
+            resultado = super.getSalePrice()*0.95;
+        } else{
+            resultado = super.getSalePrice()*0.9;
+        }
+        return resultado;
+    }
 }

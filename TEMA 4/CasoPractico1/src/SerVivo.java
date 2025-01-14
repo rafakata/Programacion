@@ -6,26 +6,30 @@ public class SerVivo {
     public SerVivo(byte edad) {
         this.edad = edad;
     }
+
     public byte getEdad() {
         return edad;
     }
+
     public void setEdad(byte edad) {
         this.edad = edad;
     }
+
     public boolean equals(SerVivo otro) {
         return this.edad == otro.edad;
-    }mayor(SerVivo otro) {
-        SerVivo resul
+    }
+
     @Override
     public String toString() {
         return "Edad=" + edad;
     }
-    public SerVivo tado;
-        if (this.edad > otro.edad) {
+
+    public SerVivo mayor(SerVivo otro) {
+        SerVivo resultado;
+        if (this.edad > otro.edad)
             resultado = this;
-        } else {
+        else
             resultado = otro;
-        }
         return resultado;
     }
 }

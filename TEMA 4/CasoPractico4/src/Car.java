@@ -41,4 +41,8 @@ public class Car {
                 ", color='" + color + '\'' +
                 '}';
     }
+
+    public double getSalePrice() {
+        return regularPrice;
+    }
 }
